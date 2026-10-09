@@ -1,6 +1,6 @@
 # Atul Shukla
 
-Personal site at [atulshukla.me](https://atulshukla.me/), served as a static GitHub Pages site. No build step, external fonts or analytics are required. A small browser script handles the inline product demo and on-demand music players; the profile and links work without it.
+Personal site at [atulshukla.me](https://atulshukla.me/), served as a static GitHub Pages site. No build step or external fonts are required. A small browser script handles the inline product demo and on-demand music players; the profile and links work without it. Microsoft Clarity analytics loads asynchronously from the snippet in `index.html`, using project ID `yv2yy4ppe8` supplied by Atul.
 
 ## Preview locally
 
