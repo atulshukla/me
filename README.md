@@ -12,6 +12,17 @@ python3 -m http.server 8877 --bind 127.0.0.1
 
 Open `http://127.0.0.1:8877/` and refresh after editing.
 
+## Publish asset changes
+
+Before committing changes to the stylesheet or browser script, update the content-based versions in `index.html`:
+
+```sh
+python3 scripts/version_assets.py
+python3 scripts/version_assets.py --check
+```
+
+The URLs change when the files change, so returning visitors request the matching assets rather than reuse the previous deployment's cached CSS or JavaScript. The check exits unsuccessfully if either version is stale. This keeps the site static and requires no dependency installation or build service.
+
 ## Content and assets
 
 The page gives product and engineering leadership equal weight, supported by selected product work, engineering experience and the founder's creative background. Business metrics are deliberately omitted from this public profile.
