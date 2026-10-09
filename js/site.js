@@ -1,5 +1,38 @@
 'use strict';
 
+const themeToggle = document.querySelector('.theme-toggle');
+if (themeToggle) {
+    const root = document.documentElement;
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+    const themeColor = document.querySelector('meta[name="theme-color"]');
+    const savedTheme = root.dataset.theme;
+    let preference = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : null;
+
+    function updateTheme() {
+        const dark = preference ? preference === 'dark' : systemTheme.matches;
+        if (preference) root.dataset.theme = preference;
+        else delete root.dataset.theme;
+        themeToggle.setAttribute('aria-pressed', String(dark));
+        themeToggle.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+        themeColor?.setAttribute('content', dark ? '#171c19' : '#f5f3ed');
+    }
+
+    updateTheme();
+    themeToggle.hidden = false;
+    themeToggle.addEventListener('click', () => {
+        const dark = preference ? preference === 'dark' : systemTheme.matches;
+        preference = dark ? 'light' : 'dark';
+        updateTheme();
+        try { localStorage.setItem('atul-theme', preference); } catch (_) { /* Keep the choice for this visit. */ }
+    });
+    systemTheme.addEventListener('change', updateTheme);
+    window.addEventListener('storage', event => {
+        if (event.key !== 'atul-theme' && event.key !== null) return;
+        preference = event.newValue === 'light' || event.newValue === 'dark' ? event.newValue : null;
+        updateTheme();
+    });
+}
+
 const demo = document.querySelector('[data-video-player]');
 if (demo) {
     const stage = demo.querySelector('.video-stage');

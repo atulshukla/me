@@ -28,7 +28,7 @@ The URLs change when the files change, so returning visitors request the matchin
 The page gives product and engineering leadership equal weight, supported by selected product work, engineering experience and the founder's creative background. Business metrics are deliberately omitted from this public profile.
 
 - `index.html` holds the profile, links and sharing metadata.
-- `css/style.css` owns the responsive layout, keyboard focus and reduced-motion styling.
+- `css/style.css` owns the responsive layout, light/dark palettes, keyboard focus and reduced-motion styling. The site follows the system theme until the header toggle is used. An explicit choice is saved locally and applied before the stylesheet loads; if storage is unavailable, the toggle still works for the visit. System colours work without JavaScript, and printed pages use the light palette.
 - `js/site.js` loads the YouTube demo on demand. Music tiles open one player in a native dialog; closing it removes the iframe and returns focus to the invoking link. Escape works from the dialog controls; provider frames may handle their own keyboard events. Without JavaScript or dialog support, the tiles retain their original links.
 - `assets/to-video-logo.svg` is the product's existing brand asset.
 - `assets/to-video-editor.webp` is an actual editor capture from the product overview. The person in the video is a podcast participant, not a portrait of Atul.
